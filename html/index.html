@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>�Interaction Programming</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">�Interaction Programming</h1>
+</header>
+<h1 id="κατασκευή-του-βιβλίου">Κατασκευή του Βιβλίου</h1>
+<blockquote>
+<p>Όπως η τέχνη θεωρήθηκε ως μίμηση της ζωής, έτσι και οι τέχνες των
+υπολογιστών μπορούν να θεωρηθούν ως η μίμηση της ίδιας της δημιουργίας
+Alan Kay</p>
+</blockquote>
+<h2 id="τι-είναι-ένα-βιβλίο">Τι είναι ένα βιβλίο;</h2>
+<p>Για τους περισσότερους αναγνώστες αυτή είναι μάλλον ρητορική, αν όχι
+περιττή ερώτηση. Δεν υπάρχει αμφιβολία ότι ένα βιβλίο είναι ένα φυσικό
+αντικείμενο που περιέχει δεμένες σελίδες. Πράγματι, αυτός είναι ένας από
+τους τέσσερις ορισμούς που βρίσκουμε για την φύση του σύγχρονου
+βιβλίου.<a href="#fn1" id="fnref1" class="footnote-ref"
+role="doc-noteref"><sup>1</sup></a> Ένα βιβλίο είναι πρώτα από όλα ένα
+αντικείμενο, αλλά είναι επίσης και το περιεχόμενο του, το οποίο μπορεί
+να είναι διαθέσιμο σε άλλες μορφές όπως είναι η ιστοσελίδα ή ο
+ηλεκτρονικός αναγνώστης, τα οποία έχουν πολύ διαφορετική φυσική μορφή
+από το βιβλίο, αλλά έχουν το ίδιο ακριβώς περιεχόμενο. Επίσης, ένα
+βιβλίο είναι μια ιδέα, με την έννοια ότι το περιεχόμενο θα μπορούσε να
+γίνει διαθέσιμο μέσω άλλων σημαντικών ιδεών, όπως για παράδειγμα ένα
+άρθρο. Τέλος, ένα βιβλίο είναι μια διεπαφή, γιατί μέσω της οργάνωσης του
+περιεχομένου σε σελίδες, ο αναγνώστης μπορεί να πλοηγηθεί όπως θέλει και
+όπως το σχεδίασαν ο συγγραφέας και ο εκδότης. Με αυτό το βιβλίο,
+επιχειρούμε να προσθέσουμε έναν ακόμη ορισμό για την φύση του βιβλίου,
+<em>ένα βιβλίο είναι επίσης και η διαδικασία κατασκευής του.</em></p>
+<section id="footnotes" class="footnotes footnotes-end-of-section"
+role="doc-endnotes">
+<hr />
+<ol>
+<li><div id="fn1">
+<p><span class="citation" data-cites="borsuk2018book">Borsuk
+(2018)</span><a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p>
+</div></li>
+</ol>
+</section>
+<h2 id="πως-κατασκευάζουμε-ένα-βιβλίο">Πως κατασκευάζουμε ένα
+βιβλίο;</h2>
+<p>Η διαδικασία κατασκευής των περισσότερων βιβλίων τις τελευταίες
+δεκαετίες μετά την διάδοση του επιτραπέζιου υπολογιστή και της
+επιφάνειας εργασίας, γίνεται με τις αντίστοιχες εφαρμογές. Ενδεικτικά,
+ένας συγγραφέας θα χρησιμοποιήσει μια εφαρμογή όπως το Microsoft Word ή
+το Apple Pages για να γράψει ένα βιβλίο και στην συνέχεια η εκδοτική
+ομάδα θα το μετατρέψει στο τελικό βιβλίο με ένα πρόγραμμα όπως το Adobe
+InDesign. Οι εφαρμογές αυτές μπορεί να είναι από διαφορετικές εταιρείες
+και να αλλάζουν σταδιακά, αλλά η βασική τους φιλοσοφία είναι η ίδια
+ακριβώς και τοποθετεί έναν αδιαπέραστο τοίχο ανάμεσα στην συγγραφή και
+την παραγωγή του βιβλίου.</p>
+<p>Η διαδικασία κατασκευής αυτού του βιβλίου γκρεμίζει τον τοίχο που
+χωρίζει την συγγραφή από την παραγωγή με μια διαδικασία κατασκευής που
+βασίζεται στην τεχνολογία λογισμικού και στα εργαλεία της γραμμής
+εντολών. Τα πλεονεκτήματα αυτής της επιλογής είναι πάρα πολλά, ανάμεσα
+στα οποία το πιο απλό και χρήσιμο είναι ότι οι διορθώσεις που γίνονται
+από τον συγγραφέα περνάνε απευθείας στο τελικό βιβλίο, αφού υπάρχει μόνο
+ένα πηγαίο κείμενο σε ένα μόνο αρχείο. Αντίθετα, στην επιτραπέζια
+σελιδοποίηση βιβλίων, για κάθε αλλαγή που κάνει ο συγγραφέας στο δικό
+του αρχείο, θα πρέπει να περαστεί χειροκίνητα στο διαφορετικό αρχείο
+παραγωγής. Η συντήρηση δύο διακριτών αρχείων με το ίδιο περιεχόμενο
+είναι μια από τις πιο κακές πρακτικές στην πληροφορική, γιατί είναι θέμα
+χρόνου τα δύο αυτά αρχεία να χάσουν τον συγχρονισμό τους.</p>
+<p>Η πιο καλή πρακτική για την συντήρηση πολλών διαφορετικών εκδοχών του
+ίδιου αρχείου είναι ένα σύστημα ελέγχου εκδόσεων. Για αυτόν τον λόγο, η
+συγγραφή αυτού του βιβλίου έχει γίνει στο σύστημα Github, το οποίο
+βασίζεται στην τεχνολογία git για τον έλεγχο εκδόσεων αρχείων κειμένου.
+Με αυτόν τον τρόπο, για κάθε αλλαγή που γίνεται διατηρείται ιστορικό. Αν
+και δεν είναι πιθανό να θέλουμε να γυρίσουμε σε παλιότερες εκδόσεις του
+αρχείου κειμένου, είναι πολύ πιθανό να θέλουμε να γίνουν διορθώσεις από
+τρίτους, όπως είναι η γλωσσική επιμέλεια. Τα σύγχρονα συστήματα ελέγχου
+εκδόσεων διευκολύνουν την συνεργασία πολλών συγγραφέων πάνω σε αρχεία
+κειμένου, όπου εκτός από τις αλλαγές κρατάνε και το ιστορικό των
+συγγραφέων. Επομένως, η παραγωγή του βιβλίου μπορεί να γίνει από την
+ομάδα συγγραφής και υποστήριξης με χρήση απλών εργαλείων λογισμικού και
+αρχεία απλού κειμένου, και η συνεισφορά του κάθε μέλους να τεκμηριώνεται
+αυτόματα από την δραστηριότητά του.</p>
+<p>Καθώς το πηγαίο κείμενο και η διαδικασία παραγωγής του τελικού
+βιβλίου βρίσκονται αποθηκευμένα σε δημόσια αποθετήρια με έλεγχο εκδόσεων
+σε μια συνεργατική πλατφόρμα ανάπτυξης λογισμικού, αυτόματα προκύπτουν
+πρόσθετα πλεονεκτήματα. Για παράδειγμα, ο επιμελής αναγνώστης μπορεί να
+διορθώσει σφάλματα και αυτόματα να προστεθεί στους συντελεστές. Επίσης,
+το συνολικό έργο μπορεί να διακλαδωθεί σε νέες κατευθύνσεις. Η
+δυνατότητα διακλαδώσεων επιτρέπει την προσθήκη νέου περιεχομένου το
+οποίο προαιρετικά θα μπορούσε να προστεθεί και στο κεντρικό αποθετήριο
+του βιβλίου. Με αυτόν τον τρόπο, όχι μόνο η διαδικασία παραγωγής, αλλά
+και η ίδια η συγγραφή του βιβλίου μετασχηματίζεται προς μια συνεργατική
+κατεύθυνση. Η δυνατότητα αυτή έχει ήδη χρησιμεύσει ως άσκηση για τους
+φοιτητές των αντίστοιχων μαθημάτων. Επιπλέον, η δυνατότητα διαφανούς και
+τεκμηριωμένης συνεργασίας μπορεί να χρησιμεύσει σε συλλογικούς
+τόμους.</p>
+<p>Πέρα από τα πρακτικές βελτιώσεις στην παραγωγή που συνοδεύουν αυτήν
+την διαδικασία κατασκευής, υπάρχουν επιπλέον κίνητρα που ενθάρρυναν
+αυτές τις προδιαγραφές για αυτό το έργο συγγραφής. Η επεξεργασία
+εγγράφων ήταν από τις πρώτες δημοφιλείς χρήσεις των πρώτων προσωπικών
+υπολογιστών και συνεχίζει να έχει έναν σημαντικό ρόλο. Οι περισσότεροι
+χρήστες υπολογιστών έχουν ήδη μια σχετική εμπειρία από τις αντίστοιχες
+γραφικές εφαρμογές, αλλά πολλοί λίγοι γνωρίζουν ότι το ίδιο αποτέλεσμα
+μπορούν να το πετύχουν με έναν πολύ διαφορετικό τρόπο. Η θεωρητική
+κατανοήση των διαφορετικών μορφών στα συστήματα διάδρασης είναι το
+κεντρικό θέμα σε αυτό το βιβλίο, άρα θα ήταν σχεδόν αντιφατικό να
+χρησιμοποιήσουμε την κυρίαρχη μορφή διάδρασης, ειδικά αφού έχει και τόσα
+μειονεκτήματα.</p>
+<figure>
+<img src="./images/book-making.jpg" id="fig:book-making"
+alt="Figure 1: Για την κατασκευή της μορφής του βιβλίου, είτε αυτή είναι ηλεκτρονική, είτε είναι φυσική, μπορεί να χρησιμοποιηθεί ένας εξομοιωτής τερματικού. Η ροή της εργασίας είναι παρόμοια με αυτήν της δεκαετίας του 1970, με την διαφορά ότι σε μια μεγάλη οθόνη μπορεί να γίνει πολυπλεξία πολλών τερματικών, όπου στο καθένα τρέχουν διαφορετικά μικρά προγράμματα και εντολές δημιουργώντας έτσι ένα ολοκληρωμένο και ταυτόχρονα δυναμικό περιβάλλον επεξεργασίας κειμένου και σελιδοποίησης." />
+<figcaption aria-hidden="true">Figure 1: Για την κατασκευή της μορφής
+του βιβλίου, είτε αυτή είναι ηλεκτρονική, είτε είναι φυσική, μπορεί να
+χρησιμοποιηθεί ένας εξομοιωτής τερματικού. Η ροή της εργασίας είναι
+παρόμοια με αυτήν της δεκαετίας του 1970, με την διαφορά ότι σε μια
+μεγάλη οθόνη μπορεί να γίνει πολυπλεξία πολλών τερματικών, όπου στο
+καθένα τρέχουν διαφορετικά μικρά προγράμματα και εντολές δημιουργώντας
+έτσι ένα ολοκληρωμένο και ταυτόχρονα δυναμικό περιβάλλον επεξεργασίας
+κειμένου και σελιδοποίησης.</figcaption>
+</figure>
+<p>Η κατασκευή του βιβλίου μπορεί να θεωρηθεί όπως η κατασκευή ενός
+συστήματος διάδρασης. Παραδοσιακά η κατασκευή του βιβλίου γίνεται από
+δύο διακριτές ομάδες, δηλαδή την συγγραφική και την εκδοτική.
+Αντίστοιχα, η κατασκευή ενός συστήματος διάδρασης συνήθως έχει δύο
+όψεις, τους προγραμματιστές και τους σχεδιαστές. Στην κατασκευή
+συστημάτων διάδρασης είδαμε ότι η βέλτιστη πρακτική είναι να έχουμε μια
+σύνθεση αυτών των δύο διαστάσεων που έχει σφαιρική κατανόηση του
+αντικειμένου ή τουλάχιστον μια γεφύρωση της απόστασης ανάμεσα τους. Αυτό
+ακριβώς το κεντρικό θεώρημα της κατασκευής της διάδρασης εφαρμόζουμε και
+στην κατασκευή αυτού του βιβλίου. Ο συγγραφέας του βιβλίου μπορεί να
+είναι ταυτόχρονα και εκδότης, αλλά κυρίως αντιλαμβάνεται αυτήν την
+παραδοσιακά διακριτή διαδικασία ως μια σύνθεση, όπου η συγγραφή
+συντελείται μαζί με την παραγωγή. Εκτός από μια πρακτική εφαρμογή της
+θεωρίας του βιβλίου, αυτή η οπτική επιτρέπει και στον αναγνώστη να γίνει
+συμμέτοχος. Ο αναγνώστης μπορεί να αντιγράψει, να μελετήσει, να
+επεξεργαστεί, και τελικά να κατανοήσει καλύτερα αυτό το βιβλίο και
+κυρίως το πνεύμα του, μέσα από την διαδικασία της ίδιας της κατασκευής
+του που είναι διαθέσιμη στο αποθετήριο <a
+href="https://github.com/mibook"
+class="uri">https://github.com/mibook</a></p>
+<h2 class="unnumbered" id="βιβλιογραφία">Βιβλιογραφία</h2>
+<div id="refs" class="references csl-bib-body hanging-indent"
+role="doc-bibliography">
+<div id="ref-borsuk2018book" class="csl-entry" role="doc-biblioentry">
+Borsuk, Amaranth. 2018. <em>The Book</em>. MIT Press.
+</div>
+</div>
+<h1 id="σύντομο-βιογραφικό">Σύντομο βιογραφικό</h1>
+<h2 id="κωνσταντίνος-χωριανόπουλος">Κωνσταντίνος Χωριανόπουλος</h2>
+<p>Ο συγγραφέας αυτού του βιβλίου έχει εργαστεί για περισσότερα από
+είκοσι χρόνια στην έρευνα και ανάπτυξη συστημάτων διάδρασης μεταξύ
+ανθρώπου και υπολογιστή. Στις αρχές της πρώτης δεκαετίας αυτού του
+αιώνα, έκανε σημαντικές συνεισφορές για τον μετασχηματισμό της παθητικής
+κατανάλωσης τηλεοπτικού περιεχομένου προς μια περισσότερο διαδραστική
+κατεύθυνση. Μια δεκαετία αργότερα, διαπίστωσε, με έκπληξη, ότι η
+πλειονότητα των χρηστών είχε στραφεί σε νέες ψηφιακές υπηρεσίες, οι
+οποίες θεωρούν τα σύγχρονα επιτραπέζια και κινητά συστήματα σαν συσκευές
+κατανάλωσης, παρόμοια με την παραδοσιακή τηλεόραση. Τα τελευταία δέκα
+χρόνια, εργάζεται για την διάδοση συστημάτων και πρακτικών που
+υποστηρίζουν περισσότερο υγιείς και βιώσιμες ανθρώπινες αξίες και
+βασίζονται σε ανθρωπιστικές και διαφανείς τεχνολογίες.</p>
+<div id="refs" class="references csl-bib-body hanging-indent"
+role="doc-bibliography">
+<div id="ref-card1983psychology" class="csl-entry"
+role="doc-biblioentry">
+Card, Stuart K, Allen Newell, και Thomas P Moran. 1983. <em>The
+Psychology of Human-Computer Interaction</em>. L. Erlbaum Associates
+Inc.
+</div>
+<div id="ref-carlston1985software" class="csl-entry"
+role="doc-biblioentry">
+Carlston, DG. 1985. <span>‘Software People: inside the computer
+business’</span>. New York: Prentice Hall.
+</div>
+<div id="ref-engelbart1962augmenting" class="csl-entry"
+role="doc-biblioentry">
+Engelbart, Douglas C. 1962. <em>Augmenting human intellect: A conceptual
+framework</em>. SRI, Menlo Park, CA.
+</div>
+<div id="ref-freiberger1984fire" class="csl-entry"
+role="doc-biblioentry">
+Freiberger, Paul, και Michael Swaine. 1984. <em>Fire in the Valley: the
+making of the personal computer</em>. McGraw-Hill, Inc.
+</div>
+<div id="ref-hertzfeld2004revolution" class="csl-entry"
+role="doc-biblioentry">
+Hertzfeld, Andy. 2004. <em>Revolution in The Valley: The Insanely Great
+Story of How the Mac Was Made</em>. " O’Reilly Media, Inc.".
+</div>
+<div id="ref-hiltzik1999dealers" class="csl-entry"
+role="doc-biblioentry">
+Hiltzik, Michael. 1999. <span>‘Dealers of Lightning: Xerox PARC and the
+Dawning of the Computer Age’</span>.
+</div>
+<div id="ref-johnson1989xerox" class="csl-entry" role="doc-biblioentry">
+Johnson, Jeff, Teresa L. Roberts, William Verplank, David Canfield
+Smith, Charles H. Irby, Marian Beard, και Kevin Mackey. 1989. <span>‘The
+xerox star: A retrospective’</span>. <em>Computer</em> 22 (9): 11–26.
+</div>
+<div id="ref-kay1993early" class="csl-entry" role="doc-biblioentry">
+Kay, Alan C. 1993. <span>‘The early history of Smalltalk’</span>.
+<em>ACM SIGPLAN Notices</em> 28 (3): 69–95.
+</div>
+<div id="ref-lanier2014owns" class="csl-entry" role="doc-biblioentry">
+Lanier, Jaron. 2014. <em>Who owns the future?</em> Simon; Schuster.
+</div>
+<div id="ref-licklider1960man" class="csl-entry" role="doc-biblioentry">
+Licklider, Joseph Carl Robnett. 1960. <span>‘Man-computer
+symbiosis’</span>. <em>IRE transactions on human factors in
+electronics</em>, τχ. 1: 4–11.
+</div>
+<div id="ref-papert1980mindstorms" class="csl-entry"
+role="doc-biblioentry">
+Papert, Seymour. 1980. <em>Mindstorms: children, computers, and powerful
+ideas</em>. Basic Books, Inc.
+</div>
+<div id="ref-raskin2000humane" class="csl-entry" role="doc-biblioentry">
+Raskin, Jef. 2000. <em>The humane interface: new directions for
+designing interactive systems</em>. Addison-Wesley Professional.
+</div>
+<div id="ref-rheingold2000tools" class="csl-entry"
+role="doc-biblioentry">
+Rheingold, Howard. 2000. <em>Tools for thought: The history and future
+of mind-expanding technology</em>. MIT Press.
+</div>
+<div id="ref-smith1999fumbling" class="csl-entry"
+role="doc-biblioentry">
+Smith, Douglas K, και Robert C Alexander. 1999. <em>Fumbling the future:
+How Xerox invented, then ignored, the first personal computer</em>.
+iUniverse.
+</div>
+<div id="ref-waldrop2001dream" class="csl-entry" role="doc-biblioentry">
+Waldrop, M Mitchell. 2001. <em>The dream machine: JCR Licklider and the
+revolution that made computing personal</em>. Viking Penguin.
+</div>
+<div id="ref-weizenbaum1976computer" class="csl-entry"
+role="doc-biblioentry">
+Weizenbaum, Joseph. 1976. <em>Computer power and human reason: From
+judgment to calculation.</em> WH Freeman &amp; Co.
+</div>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent"
+role="doc-bibliography">
+<div id="ref-buxton2010sketching" class="csl-entry"
+role="doc-biblioentry">
+Buxton, Bill. 2010. <em>Sketching user experiences: getting the design
+right and the right design</em>. Morgan kaufmann.
+</div>
+<div id="ref-card1978evaluation" class="csl-entry"
+role="doc-biblioentry">
+Card, Stuart K, William K English, και Betty J Burr. 1978.
+<span>‘Evaluation of mouse, rate-controlled isometric joystick, step
+keys, and text keys for text selection on a CRT’</span>.
+<em>Ergonomics</em> 21 (8): 601–13.
+</div>
+<div id="ref-card2018psychology" class="csl-entry"
+role="doc-biblioentry">
+Card, Stuart K, Thomas P Moran, και Allen Newell. 2018. <em>The
+psychology of human-computer interaction</em>. Crc Press.
+</div>
+<div id="ref-carroll2000making" class="csl-entry"
+role="doc-biblioentry">
+Carroll, John M. 2000. <em>Making use: scenario-based design of
+human-computer interactions</em>. MIT press.
+</div>
+<div id="ref-moggridge2007designing" class="csl-entry"
+role="doc-biblioentry">
+Moggridge, Bill. 2007. <em>Designing interactions</em>. MIT press
+Cambridge, MA.
+</div>
+<div id="ref-norman2013design" class="csl-entry" role="doc-biblioentry">
+Norman, Don. 2013. <em>The design of everyday things: Revised and
+expanded edition</em>. Basic books.
+</div>
+<div id="ref-papanek1972design" class="csl-entry"
+role="doc-biblioentry">
+Papanek, Victor, και R Buckminster Fuller. 1972. <em>Design for the real
+world</em>. Thames; Hudson London.
+</div>
+<div id="ref-pering2002interaction" class="csl-entry"
+role="doc-biblioentry">
+Pering, Celine. 2002. <span>‘Interaction design prototyping of
+communicator devices: Towards meeting the hardware-software
+challenge’</span>. <em>interactions</em> 9 (6): 36–46.
+</div>
+<div id="ref-thackara2006bubble" class="csl-entry"
+role="doc-biblioentry">
+Thackara, John. 2006. <em>In the bubble: designing in a complex
+world</em>. MIT press.
+</div>
+<div id="ref-winograd1996bringing" class="csl-entry"
+role="doc-biblioentry">
+Winograd, Terry κ.ά. 1996. <em>Bringing design to software</em>. <span
+class="math inline">{</span>Addison-Wesley Professional<span
+class="math inline">}</span>.
+</div>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent"
+role="doc-bibliography">
+<div id="ref-garrett2010elements" class="csl-entry"
+role="doc-biblioentry">
+Garrett, Jesse James. 2010. <em>Elements of user experience, the:
+user-centered design for the web and beyond</em>. Pearson Education.
+</div>
+<div id="ref-hiltzik1999dealers" class="csl-entry"
+role="doc-biblioentry">
+Hiltzik, Michael. 1999. <span>‘Dealers of Lightning: Xerox PARC and the
+Dawning of the Computer Age’</span>.
+</div>
+<div id="ref-igoe2007making" class="csl-entry" role="doc-biblioentry">
+Igoe, Tom. 2007. <em>Making things talk: Practical methods for
+connecting physical objects</em>. " O’Reilly Media, Inc.".
+</div>
+<div id="ref-mcewen2013designing" class="csl-entry"
+role="doc-biblioentry">
+McEwen, Adrian, και Hakim Cassimally. 2013. <em>Designing the internet
+of things</em>. John Wiley &amp; Sons.
+</div>
+<div id="ref-norman2013design" class="csl-entry" role="doc-biblioentry">
+Norman, Don. 2013. <em>The design of everyday things: Revised and
+expanded edition</em>. Basic books.
+</div>
+<div id="ref-norman2004emotional" class="csl-entry"
+role="doc-biblioentry">
+Norman, Donald A. 2004. <em>Emotional design: Why we love (or hate)
+everyday things</em>. Basic Civitas Books.
+</div>
+<div id="ref-o2004physical" class="csl-entry" role="doc-biblioentry">
+O’Sullivan, Dan, και Tom Igoe. 2004. <em>Physical computing: sensing and
+controlling the physical world with computers</em>. Course Technology
+Press.
+</div>
+<div id="ref-shneiderman1997direct" class="csl-entry"
+role="doc-biblioentry">
+Shneiderman, Ben, και Pattie Maes. 1997. <span>‘Direct manipulation vs.
+interface agents’</span>. <em>interactions</em> 4 (6): 42–61.
+</div>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent"
+role="doc-bibliography">
+<div id="ref-andrew2000pragmatic" class="csl-entry"
+role="doc-biblioentry">
+Andrew, Hunt, και Thomas David. 2000. <span>‘The Pragmatic Programmer:
+From Journeyman to Master’</span>. Addison Wesley Longman, Redwood City.
+</div>
+<div id="ref-banzi2014getting" class="csl-entry" role="doc-biblioentry">
+Banzi, Massimo, και Michael Shiloh. 2014. <em>Getting started with
+Arduino: the open source electronics prototyping platform</em>. Maker
+Media, Inc.
+</div>
+<div id="ref-graham2004hackers" class="csl-entry"
+role="doc-biblioentry">
+Graham, Paul. 2004. <em>Hackers &amp; painters: big ideas from the
+computer age</em>. " O’Reilly Media, Inc.".
+</div>
+<div id="ref-grudin1990computer" class="csl-entry"
+role="doc-biblioentry">
+Grudin, Jonathan. 1990. <span>‘The computer reaches out: the historical
+continuity of interface design’</span>. Στο <em>Proceedings of the
+SIGCHI conference on Human factors in computing systems</em>, 261–68.
+ACM.
+</div>
+<div id="ref-ingalls2020evolution" class="csl-entry"
+role="doc-biblioentry">
+Ingalls, Daniel. 2020. <span>‘The evolution of Smalltalk: from
+Smalltalk-72 through Squeak’</span>. <em>Proceedings of the ACM on
+Programming Languages</em> 4 (HOPL): 1–101.
+</div>
+<div id="ref-markoff2005dormouse" class="csl-entry"
+role="doc-biblioentry">
+Markoff, John. 2005. <em>What the dormouse said: How the sixties
+counterculture shaped the personal computer industry</em>. Penguin.
+</div>
+<div id="ref-mcconnell2004code" class="csl-entry"
+role="doc-biblioentry">
+McConnell, Steve. 2004. <em>Code complete</em>. Pearson Education.
+</div>
+<div id="ref-noble2009programming" class="csl-entry"
+role="doc-biblioentry">
+Noble, Joshua. 2009. <em>Programming interactivity: a designer’s guide
+to Processing, Arduino, and OpenFrameworks</em>. " O’Reilly Media,
+Inc.".
+</div>
+<div id="ref-olsen2009building" class="csl-entry"
+role="doc-biblioentry">
+Olsen, Dan. 2009. <em>Building interactive systems: principles for
+human-computer interaction</em>. Cengage Learning.
+</div>
+<div id="ref-reas2007processing" class="csl-entry"
+role="doc-biblioentry">
+Reas, Casey, και Ben Fry. 2007. <em>Processing: a programming handbook
+for visual designers and artists</em>. 6812. Mit Press.
+</div>
+<div id="ref-thimbleby2007press" class="csl-entry"
+role="doc-biblioentry">
+Thimbleby, H. 2007. <em>press on: Principles of Interaction
+Programming</em>. MIT Press, Cambridge.
+</div>
+<div id="ref-victor2012learnable" class="csl-entry"
+role="doc-biblioentry">
+Victor, Bret. 2012. <span>‘Learnable programming: Designing a
+programming system for understanding programs’</span>. 2012. <a
+href="http://worrydream.com/LearnableProgramming">http://worrydream.com/LearnableProgramming</a>.
+</div>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent"
+role="doc-bibliography">
+<div id="ref-fogg2003persuasive" class="csl-entry"
+role="doc-biblioentry">
+Fogg, BJ. 2003. <em>Persuasive Technology: Using Computers to Change
+What We Think and Do</em>. Morgan Kaufmann.
+</div>
+<div id="ref-kaptelinin2007beyond" class="csl-entry"
+role="doc-biblioentry">
+Kaptelinin, Victor, και Mary Czerwinski. 2007. <em>Beyond the desktop
+metaphor: designing integrated digital work environments</em>. Τ. 1. The
+MIT Press.
+</div>
+<div id="ref-krueger1991artificial" class="csl-entry"
+role="doc-biblioentry">
+Krueger, M. W. 1991. <em>Artificial Reality II</em>. Addison-Wesley.
+</div>
+<div id="ref-laurel2013computers" class="csl-entry"
+role="doc-biblioentry">
+Laurel, Brenda. 2013. <em>Computers as theatre</em>. Addison-Wesley.
+</div>
+<div id="ref-levy1984hackers" class="csl-entry" role="doc-biblioentry">
+Levy, Steven. 1984. <em>Hackers: Heroes of the computer revolution</em>.
+Τ. 14. Anchor Press/Doubleday Garden City, NY.
+</div>
+<div id="ref-markoff2005dormouse" class="csl-entry"
+role="doc-biblioentry">
+Markoff, John. 2005. <em>What the dormouse said: How the sixties
+counterculture shaped the personal computer industry</em>. Penguin.
+</div>
+<div id="ref-mccullough1998abstracting" class="csl-entry"
+role="doc-biblioentry">
+McCullough, Malcolm. 1998. <em>Abstracting craft: The practiced digital
+hand</em>. MIT press.
+</div>
+<div id="ref-norman2014things" class="csl-entry" role="doc-biblioentry">
+Norman, Don. 2014. <em>Things that make us smart: Defending human
+attributes in the age of the machine</em>. Diversion Books.
+</div>
+<div id="ref-norman2004emotional" class="csl-entry"
+role="doc-biblioentry">
+Norman, Donald A. 2004. <em>Emotional design: Why we love (or hate)
+everyday things</em>. Basic Civitas Books.
+</div>
+<div id="ref-reeves1996media" class="csl-entry" role="doc-biblioentry">
+Reeves, Byron, και Clifford Ivar Nass. 1996. <em>The media equation: How
+people treat computers, television, and new media like real people and
+places.</em> Cambridge university press.
+</div>
+<div id="ref-rheingold2000virtual" class="csl-entry"
+role="doc-biblioentry">
+Rheingold, Howard. 2000. <em>The Virtual Community: Homesteading on the
+Electronic Frontier</em>. MIT press.
+</div>
+<div id="ref-weizenbaum1976computer" class="csl-entry"
+role="doc-biblioentry">
+Weizenbaum, Joseph. 1976. <em>Computer power and human reason: From
+judgment to calculation.</em> WH Freeman &amp; Co.
+</div>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent"
+role="doc-bibliography">
+<div id="ref-baecker1993readings" class="csl-entry"
+role="doc-biblioentry">
+Baecker, Ronald M. 1993. <em>Readings in groupware and
+computer-supported cooperative work: Assisting human-human
+collaboration</em>. Elsevier.
+</div>
+<div id="ref-barnet2013memory" class="csl-entry" role="doc-biblioentry">
+Barnet, Belinda. 2013. <em>Memory machines: The evolution of
+hypertext</em>. Anthem Press.
+</div>
+<div id="ref-berners1996past" class="csl-entry" role="doc-biblioentry">
+Berners-Lee, Tim. 1996. <span>‘WWW: Past, present, and future’</span>.
+<em>Computer</em> 29 (10): 69–77.
+</div>
+<div id="ref-bolt1978spatial" class="csl-entry" role="doc-biblioentry">
+Bolt, Richard A. 1978. <span>‘Spatial data management system’</span>.
+MASSACHUSETTS INST OF TECH CAMBRIDGE ARCHITECTURE MACHINE GROUP.
+</div>
+<div id="ref-bush1945we" class="csl-entry" role="doc-biblioentry">
+Bush, Vannevar κ.ά. 1945. <span>‘As we may think’</span>. <em>The
+atlantic monthly</em> 176 (1): 101–8.
+</div>
+<div id="ref-garrett2010elements" class="csl-entry"
+role="doc-biblioentry">
+Garrett, Jesse James. 2010. <em>Elements of user experience, the:
+user-centered design for the web and beyond</em>. Pearson Education.
+</div>
+<div id="ref-licklider1960man" class="csl-entry" role="doc-biblioentry">
+Licklider, Joseph Carl Robnett. 1960. <span>‘Man-computer
+symbiosis’</span>. <em>IRE transactions on human factors in
+electronics</em>, τχ. 1: 4–11.
+</div>
+<div id="ref-malone1994interdisciplinary" class="csl-entry"
+role="doc-biblioentry">
+Malone, Thomas W, και Kevin Crowston. 1994. <span>‘The interdisciplinary
+study of coordination’</span>. <em>ACM Computing Surveys (CSUR)</em> 26
+(1): 87–119.
+</div>
+<div id="ref-nelson1974computer" class="csl-entry"
+role="doc-biblioentry">
+Nelson, Theodor H. 1974. <span>‘Computer lib/Dream machines’</span>.
+</div>
+<div id="ref-nelson2010possiplex" class="csl-entry"
+role="doc-biblioentry">
+Nelson, Theodor H κ.ά. 2010. <em>POSSIPLEX: movies, intellect, creative
+control, my computer life and the fight for civilization: an
+autobiography of Ted Nelson</em>. Mindful Press.
+</div>
+<div id="ref-packer2002multimedia" class="csl-entry"
+role="doc-biblioentry">
+Packer, Randall, και Ken Jordan. 2002. <em>Multimedia: from Wagner to
+virtual reality</em>. WW Norton &amp; Company.
+</div>
+<div id="ref-shiffman2009learning" class="csl-entry"
+role="doc-biblioentry">
+Shiffman, Daniel. 2009. <em>Learning Processing: a beginner’s guide to
+programming images, animation, and interaction</em>. Morgan Kaufmann.
+</div>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent"
+role="doc-bibliography">
+<div id="ref-denning1998beyond" class="csl-entry"
+role="doc-biblioentry">
+Denning, Peter J, και Robert M Metcalfe. 1998. <em>Beyond calculation:
+The next fifty years of computing</em>. Springer Science &amp; Business
+Media.
+</div>
+<div id="ref-engelbart1988augmented" class="csl-entry"
+role="doc-biblioentry">
+Engelbart, Douglas. 1988. <span>‘The augmented knowledge
+workshop’</span>. Στο <em>A history of personal workstations</em>,
+185–248.
+</div>
+<div id="ref-freiberger1984fire" class="csl-entry"
+role="doc-biblioentry">
+Freiberger, Paul, και Michael Swaine. 1984. <em>Fire in the Valley: the
+making of the personal computer</em>. McGraw-Hill, Inc.
+</div>
+<div id="ref-10.1145/61975" class="csl-entry" role="doc-biblioentry">
+Goldberg, Adele, επιμ. 1988. <em>A History of Personal
+Workstations</em>. New York, NY, USA: Association for Computing
+Machinery.
+</div>
+<div id="ref-hertzfeld2004revolution" class="csl-entry"
+role="doc-biblioentry">
+Hertzfeld, Andy. 2004. <em>Revolution in The Valley [Paperback]: The
+Insanely Great Story of How the Mac Was Made</em>. " O’Reilly Media,
+Inc.".
+</div>
+<div id="ref-kay1977personal" class="csl-entry" role="doc-biblioentry">
+Kay, Alan, και Adele Goldberg. 1977. <span>‘Personal dynamic
+media’</span>. <em>Computer</em> 10 (3): 31–41.
+</div>
+<div id="ref-kernighan2019unix" class="csl-entry"
+role="doc-biblioentry">
+Kernighan, Brian W. 2019. <em>UNIX: A History and a Memoir</em>. Kindle
+Direct Publishing.
+</div>
+<div id="ref-lanier2017dawn" class="csl-entry" role="doc-biblioentry">
+Lanier, Jaron. 2017. <em>Dawn of the new everything: Encounters with
+reality and virtual reality</em>. Henry Holt; Company.
+</div>
+<div id="ref-laurel2013computers" class="csl-entry"
+role="doc-biblioentry">
+Laurel, Brenda. 2013. <em>Computers as theatre</em>. Addison-Wesley.
+</div>
+<div id="ref-nelson2008geeks" class="csl-entry" role="doc-biblioentry">
+Nelson, Ted. 2008. <em>Geeks Bearing Gifts</em>. Mindful Pr.
+</div>
+<div id="ref-sellen2003myth" class="csl-entry" role="doc-biblioentry">
+Sellen, Abigail J, και Richard HR Harper. 2003. <em>The myth of the
+paperless office</em>. MIT press.
+</div>
+<div id="ref-waldrop2001dream" class="csl-entry" role="doc-biblioentry">
+Waldrop, M Mitchell. 2001. <em>The dream machine: JCR Licklider and the
+revolution that made computing personal</em>. Viking Penguin.
+</div>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent"
+role="doc-bibliography">
+<div id="ref-bardini2000bootstrapping" class="csl-entry"
+role="doc-biblioentry">
+Bardini, Thierry. 2000. <em>Bootstrapping: Douglas Engelbart,
+coevolution, and the origins of personal computing</em>. Stanford
+University Press.
+</div>
+<div id="ref-bolter2000remediation" class="csl-entry"
+role="doc-biblioentry">
+Bolter, Jay David, και Richard Grusin. 2000. <em>Remediation:
+Understanding new media</em>. mit Press.
+</div>
+<div id="ref-engelbart1962augmenting" class="csl-entry"
+role="doc-biblioentry">
+Engelbart, Douglas C. 1962. <em>Augmenting human intellect: A conceptual
+framework</em>. SRI, Menlo Park, CA.
+</div>
+<div id="ref-computer1993connections" class="csl-entry"
+role="doc-biblioentry">
+Gildall, Gary. 1993. <em>Computer Connections: People, Places, and
+Events in the Evolution of the Personal Computer Industry</em>.
+Unpublished.
+</div>
+<div id="ref-hiltzik1999dealers" class="csl-entry"
+role="doc-biblioentry">
+Hiltzik, Michael. 1999. <span>‘Dealers of Lightning: Xerox PARC and the
+Dawning of the Computer Age’</span>.
+</div>
+<div id="ref-ihde2012technics" class="csl-entry" role="doc-biblioentry">
+Ihde, Don. 2012. <em>Technics and praxis: A philosophy of
+technology</em>. Τ. 24. Springer Science &amp; Business Media.
+</div>
+<div id="ref-ingalls2020evolution" class="csl-entry"
+role="doc-biblioentry">
+Ingalls, Daniel. 2020. <span>‘The evolution of Smalltalk: from
+Smalltalk-72 through Squeak’</span>. <em>Proceedings of the ACM on
+Programming Languages</em> 4 (HOPL): 1–101.
+</div>
+<div id="ref-kay1993early" class="csl-entry" role="doc-biblioentry">
+Kay, Alan C. 1993. <span>‘The early history of Smalltalk’</span>.
+<em>ACM SIGPLAN Notices</em> 28 (3): 69–95.
+</div>
+<div id="ref-lakoff2008metaphors" class="csl-entry"
+role="doc-biblioentry">
+Lakoff, George, και Mark Johnson. 2008. <em>Metaphors we live by</em>.
+University of Chicago press.
+</div>
+<div id="ref-lanier2010you" class="csl-entry" role="doc-biblioentry">
+Lanier, Jaron. 2010. <em>You are not a gadget: A manifesto</em>.
+Vintage.
+</div>
+<div id="ref-mumford2010technics" class="csl-entry"
+role="doc-biblioentry">
+Mumford, Lewis. 2010. <em>Technics and civilization</em>. University of
+Chicago Press.
+</div>
+<div id="ref-nelson2010possiplex" class="csl-entry"
+role="doc-biblioentry">
+Nelson, Theodor H. 2010. <em>POSSIPLEX: movies, intellect, creative
+control, my computer life and the fight for civilization: an
+autobiography of Ted Nelson</em>. Mindful Press.
+</div>
+<div id="ref-raskin2000humane" class="csl-entry" role="doc-biblioentry">
+Raskin, Jef. 2000. <em>The humane interface: new directions for
+designing interactive systems</em>. Addison-Wesley Professional.
+</div>
+<div id="ref-roszak1986satori" class="csl-entry" role="doc-biblioentry">
+Roszak, Theodore. 1986. <em>From Satori to Silicon Valley: San Francisco
+and the American Counterculture</em>. Don’t Call It Frisco Press.
+</div>
+<div id="ref-shasha1998out" class="csl-entry" role="doc-biblioentry">
+Shasha, Dennis, και Cathy Lazere. 1998. <em>Out of their minds: the
+lives and discoveries of 15 great computer scientists</em>. Springer
+Science &amp; Business Media.
+</div>
+<div id="ref-wirth1992project" class="csl-entry" role="doc-biblioentry">
+Wirth, Niklaus, και Jürg Gutknecht. 1992. <em>Project Oberon</em>.
+Addison-Wesley Reading.
+</div>
+</div>
+<h1 id="εισαγωγή">Εισαγωγή</h1>
+<blockquote>
+<p>Η μάθηση δεν είναι το αποτέλεσμα της διδασκαλίας, αλλά το αποτέλεσμα
+της δραστηριότητας του μαθητή. John Holt</p>
+</blockquote>
+<p>Η κατασκευή της διάδρασης είναι μια σχετικά νέα γνωστική περιοχή, η
+οποία δημιουργήθηκε από τη μεγάλη αποδοχή που γνώρισαν τα συστήματα
+διάδρασης ανθρώπου και υπολογιστή σε ένα ευρύτατο φάσμα εφαρμογών της
+καθημερινότητας και της εργασίας. Είναι τόσες πολλές οι ψηφιακές ανάγκες
+των ανθρώπων σε διαφορετικές πτυχές της ζωής τους (π.χ., ευζωία,
+ψυχαγωγία, μάθηση, εμπόριο, εργασία, κτλ.) και ταυτόχρονα δημιουργούνται
+συνέχεια τόσο νέες συσκευές όσο και νέες συνδέσεις μεταξύ τους, ώστε η
+κατασκευή της διάδρασης αναδεικνύεται οργανικά σε πρωταγωνιστή στη
+σχεδίαση και κατασκευή νέων ανθρώπινων και κοινωνικών δραστηριοτήτων. Το
+βιβλίο αυτό βασίζεται στην άποψη ότι η κατασκευή της διάδρασης, εκτός
+του ότι είναι κάτι περισσότερο από το άθροισμα των επιμέρους τμημάτων,
+είναι κυρίως ένα νέο τεχνολογικό επίπεδο το οποίο έχει τη δυνατότητα να
+επαναπροσδιορίσει με καλό ή κακό τρόπο όλες τις ανθρώπινες και
+κοινωνικές δραστηριότητες.</p>
+<p>Συνήθως, όταν έχουμε μια νέα γνωστική περιοχή οι επιστήμονες θα
+προσπαθήσουν να την προσεγγίσουν μεθοδικά, σύμφωνα με τις τεχνικές που
+έχουν δουλέψει σε παρόμοιες περιοχές στο παρελθόν. Για παράδειγμα, ο
+προγραμματισμός αντιμετωπίζεται ως υποπερίπτωση της ευρύτερης περιοχής
+των μηχανικών (π.χ., μηχανολόγοι μηχανικοί), αφού έχει να κάνει με την
+κατασκευή και λειτουργία μιας μηχανής. Ταυτόχρονα, είναι λογικό η
+διάδραση να αντιμετωπίζεται ως υποπερίπτωση της ευρύτερης περιοχής του
+βιομηχανικού σχεδιασμού (όπως π.χ. η γραφιστική και η εργονομία). Στην
+ειδική περίπτωση της κατασκευής της διάδρασης και με δεδομένο ότι
+αναφερόμαστε σε μια σύνθετη περιοχή, διαφορετικού επιπέδου από τις
+επιμέρους, δεν έχουμε την ευχέρεια να κάνουμε τις παραπάνω
+απλουστεύσεις.</p>
+<p>Οι συσκευές διάδρασης με τους υπολογιστές, και αντίστοιχα η κατασκευή
+της διάδρασής τους, είναι έννοιες φευγαλέες τουλάχιστον για την περίοδο
+από τη δεκαετία του 1970 μέχρι και τη δεκαετία του 2010, αφού η διάδραση
+με τους υπολογιστές ξεκινάει από το τραπέζι και περνάει στα κινητά,
+φορετά, και διάχυτα συστήματα. Tη δεκαετία του 1970, η τυπική μορφή του
+προσωπικού υπολογιστή ήταν ο επιτραπέζιος υπολογιστής χωρίς γραφικό
+περιβάλλον εργασίας, το οποίο υπήρξε αντικείμενο έρευνας στα εργαστήρια.
+Τη δεκαετία του 1980, η γραφική επιφάνεια εργασίας έγινε εμπορικά
+διαθέσιμη, ενώ παράλληλα, το μεγαλύτερο μέρος του λογισμικού είχε
+περάσει από τη γραμμή εντολών στα μενού και στις φόρμες, οπότε το
+πληκτρολόγιο παρέμεινε η πιο δημοφιλής συσκευή εισόδου. Τη δεκαετία του
+1990, η γραφική επιφάνεια εργασίας και το ποντίκι έγιναν ο κυρίαρχος
+τρόπος διάδρασης με τον προσωπικό υπολογιστή, οπότε η συσκευή εισόδου
+ποντίκι και η έμμεση διάδραση με αντικείμενα στην οθόνη μέσω του δείκτη
+καθόρισε τα πιο δημοφιλή στυλ διάδρασης. Στα τέλη της δεκαετίας του
+2000, ο κινητός υπολογιστής με οθόνη αφής έφερε στο προσκήνιο τις
+χειρονομίες και την άμεση διάδραση στην οθόνη, ενώ τη δεκαετία του 2010,
+ο υπολογιστής διαχέεται πέρα από το γραφείο, τόσο στο περιβάλλον όσο και
+στο ανθρώπινο σώμα, δημιουργώντας έτσι ένα οικοσύστημα συσκευών και
+εφαρμογών για τον χρήστη. Αντίστοιχα, η κατασκευή της διάδρασης
+εξελίσσεται έτσι ώστε τα βασικά αρχέτυπα και εργαλεία να διευκολύνουν
+τον χειρισμό των νέων συσκευών του χρήστη, όπως είναι το πληκτρολόγιο, η
+οθόνη, το ποντίκι, η οθόνη αφής, κτλ.</p>
+<p>Παράλληλα και πάντα αλληλένδετα με την εξέλιξη του υλικού και της
+φυσικής μορφής του υπολογιστή, έχουμε μια εξέλιξη του λογισμικού και του
+στυλ διάδρασης με τον υπολογιστή, η οποία σχετίζεται περισσότερο με τις
+εφαρμογές και τις διεργασίες του χρήστη. Οι πρώτες δημοφιλείς εφαρμογές
+του προσωπικού υπολογιστή ήταν ο επεξεργαστής κειμένου και τα φύλλα
+εργασίας, τα οποία αποτελούσαν το βασικό κίνητρο αγοράς κατά τις
+δεκαετίες του 1970 και του 1980. Τη δεκαετία του 1990 είχαμε τη μεγάλη
+υπόσχεση των εκπαιδευτικών και ψυχαγωγικών πολυμέσων, τα οποία τελικά
+δεν έφτασαν στον τελικό χρήστη όπως αρχικά είχε σχεδιαστεί (μέσω της
+καλωδιακής τηλεόρασης), αλλά περισσότερο μέσω του οπτικού δίσκου, των
+κονσολών για βιντεο-παιχνίδια, και του διαδικτύου. Από το τέλος της
+δεκαετίας του 2000, έχουμε την επικράτηση των κοινωνικών μέσων δικτύωσης
+ως κύριαρχο στυλ διάδρασης με τον υπολογιστή. Πλέον, όλες οι εφαρμογές,
+ανεξάρτητα από το αν έχουν στόχο την παραγωγικότητα, την εκπαίδευση, την
+ψυχαγωγία, τις εμπορικές συναλλαγές ή την πληροφόρηση, βασίζονται ή
+τουλάχιστον έχουν μια διάσταση κοινωνικού δικτύου. Αντίστοιχα, η
+κατασκευή της διάδρασης εξελίσσεται, έτσι ώστε τα βασικά αρχέτυπα και
+εργαλεία να διευκολύνουν τον χειρισμό των οντοτήτων του χρήστη, όπως
+είναι τα τοπικά αρχεία, τα πολυμέσα, τα υπερμέσα, το κοινωνικό δίκτυο,
+κτλ.</p>
+<p>Η κατασκευή της διάδρασης ανθρώπου και υπολογιστή, όπως είδαμε
+συνοπτικά παραπάνω, έχει παραμείνει για πολύ καιρό μια φευγαλέα περιοχή,
+επειδή σε κάθε χρονική περίοδο έχουμε διαφορετικές τεχνολογικές μορφές
+υπολογιστών (π.χ., επιτραπέζιος, κινητός, φορετός, διάχυτος) διεπαφών με
+τους χρήστες (π.χ., γραμμή εντολών, γραφικό περιβάλλον, χειρονομίες,
+φυσική γλώσσα) και εφαρμογών (π.χ., προσομοίωση, γραφείο, πλοήγηση,
+φωτογραφία). Για παράδειγμα, ένας χρήστης υπολογιστών που έλαβε τη
+βασική, δευτεροβάθμια, και τριτοβάθμια εκπαίδευση τη δεκαετία του 1970,
+ή το πολύ μέχρι τα μισά της δεκαετίας του 1980, είναι πολύ πιθανό να
+έχει μεγάλη εξοικείωση με τη γραμμή εντολών και τους επιτραπέζιους
+υπολογιστές, αφού αυτή ήταν η βασική μορφή στα χρόνια της εκπαίδευσής
+του. Αντίθετα, ένας χρήστης που έλαβε την εκπαίδευσή του μετά το 2000
+και κατά τη δεκαετία του 2010, είναι πολύ πιθανό να μην έχει καθόλου
+προσωπικό επιτραπέζιο υπολογιστή, αφού οι βασικές διεργασίες του χρήστη
+αυτήν τη χρονική περίοδο (π.χ., αναζήτηση στον παγκόσμιο ιστό, κοινωνική
+δικτύωση, ψηφιακό περιεχόμενο, κτλ.) μπορούν να γίνουν εξίσου καλά, αν
+όχι καλύτερα, με έναν κινητό υπολογιστή με διεπαφή χειρονομίας, η οποία
+δεν απαιτεί σχεδόν καμία ανάπτυξη νέων δεξιοτήτων. Η αποδοχή και η
+επικράτηση της έννοιας της ευχρηστίας περισσότερο ως οικειότητα με τις
+πρώτες εμπειρίες μας έχει αυξήσει μεν την προσβασιμότητα στην πληροφορία
+αλλά ταυτόχρονα έχει μειώσει την διαφάνεια των τεχνολογιών διάδρασης
+καθώς και τις δεξιότητες στην κατασκευή της διάδρασης.</p>
+<p>Βλέπουμε, λοιπόν, ότι στην πράξη, τόσο ο υπολογιστικός όσο και ο
+ψηφιακός αλφαβητισμός είναι έννοιες περισσότερο σχετικές με τη
+δημογραφία και την ημερομηνία γέννησης, παρά με μια διαχρονική αξία. Για
+παράδειγμα, ο όρος υπολογιστής για πολλές δεκαετίες πριν την δημιουργία
+των πρώτων ηλεκτρονικών και ψηφιακών υπολογιστών αναφερόταν στον άνθρωπο
+που έκανε μαθηματικούς υπολογισμούς για να φτιάξει τριγωνομετρικούς και
+λογαριθμικούς πίνακες. Για αυτό τον λόγο, το περιεχόμενο του βιβλίου,
+σκόπιμα αποφεύγει τις πιο νέες εξελίξεις και προϊόντα, έτσι ώστε να
+είναι όσο γίνεται πιο διαχρονικό. Η έμφαση δίνεται σε παλαιότερα
+συστήματα, όχι επειδή υπάρχει μια ρετρολαγνεία, αλλά επειδή υπάρχουν
+διαχρονικές τάσεις, που είναι παρούσες και σε σύγχρονα προϊόντα και οι
+οποίες ενδέχεται να επηρεάσουν τα μελλοντικά. Η μελέτη παλαιότερων
+συστημάτων δεν έχει απλά ιστορικό χαρακτήρα, αλλά σκοπεύει να φωτίσει
+εκείνα τα τεχνολογικά και ανθρωπιστικά μοτίβα που εμφανίζονται και σε
+σύγχρονα συστήματα, και πολύ πιθανόν και σε μελλοντικά.</p>
+<p>Εκτός από την έμφαση στα σύγχρονα και επίκαιρα συστήματα, τα
+περισσότερα βιβλία σε θέματα τεχνολογίας προσπαθούν να χωρέσουν όσο
+γίνεται περισσότερο περιέχομενο στο τυπικό μέγεθος ενός τυπωμένου ή
+ηλεκτρονικού βιβλίου. Σε αυτό το βιβλίο, ο στόχος ήταν να καλύψουμε όσο
+γίνεται περισσότερα θέματα σε όσο γίνεται μικρότερο χώρο, άρα και σε
+λιγότερο χρόνο για τον αναγνώστη. Επιπλέον, το ύφος της γραφής παραμένει
+προφορικό και σκόπιμα αποφεύγει το εγκυπλοπαιδικό, αφού όλες οι
+πληροφορίες είναι πλέον διαθέσιμες σε ηλεκτρονικά μέσα, καθώς και στα
+κλαδικά βιβλία αναφοράς του τομέα. Ακόμη, το βιβλίο συνοδεύεται από
+πολλές εικόνες συσκευών και λογισμικού διάδρασης με τον χρήστη. Οι
+εικόνες αυτές σκόπιμα παρουσιάζονται σε ζευγάρια με σχετικά εκτενείς
+λεζάντες στην ίδια σελίδα, έτσι ώστε να παρέχουν μια παράλληλη διεπαφή
+ανάγνωσης, η οποία είναι σίγουρα πολύ οικεία στην εποχή της εικόνας.
+Ακόμη περισσότερες εικόνες και πρόσθετους τρόπους οργάνωσής τους θα βρει
+ο αναγνώστης στην ιστοσελίδα του βιβλίου, όπου υπάρχουν εικόνες σε
+χρονολόγια και σε διαφάνειες. Με αυτόν τον τρόπο, το βιβλίο γίνεται
+περισσότερο προσβάσιμο για τον αναγνώστη, αλλά και συμπληρωματικό με
+άλλες προσπάθειες.</p>
+<p>Αυτό το βιβλίο απευθύνεται σε όσους εμπλέκονται με οποιονδήποτε ρόλο
+στην σχεδιάση και κατασκευή συστημάτων διάδρασης ανθρώπου και
+υπολογιστή. Επομένως, είναι χρήσιμο τόσο σε επαγγελματίες όσο και σε
+φοιτητές μαθημάτων πληροφορικής, μηχανικής και σχεδίασης, που θέλουν να
+αποκτήσουν μια εισαγωγή στην περιοχή ή θέλουν να τακτοποιήσουν σκόρπιες
+γνώσεις. Επιπλέον, με δεδομένη την εξάπλωση των εργαλείων της
+πληροφορικής σε πολλούς συγγενείς τεχνολογικούς και επιστημονικούς
+κλάδους, αλλά και σε ακόμη περισσότερους κλάδους που ωφελούνται ή ακόμη
+και επηρεάζονται από τις εφαρμογές της, το βιβλίο αυτό απευθύνεται σε
+όλους αυτούς που συμμετέχουν σε μια ομάδα που καλείται να σχεδιάσει ή να
+βελτιώσει ένα διαδραστικό σύστημα που εμπλέκεται σε μια ανθρώπινη
+δραστηριότητα, ανεξάρτητα από τον ρόλο τους και ανεξάρτητα από τη βασική
+τους δεξιότητα.</p>
+<p>Υπάρχουν πολλά βιβλία και ακόμη περισσότερες ελεύθερες πηγές στο
+δίκτυο τα οποία είναι πλούσια σε περιεχόμενο και εγκυκλοπαιδικές
+γνώσεις, και στα οποία αξίζει να ανατρέξουμε κάθε φορά που θα έχουμε ένα
+καλά ορισμένο ερώτημα και θέλουμε να ενημερωθούμε σε βάθος. Η ανάγνωση
+ενός βιβλίου είναι μεν αναγκαία συνθήκη, αλλά όχι και ικανή για να
+μεταδώσει πρακτικές γνώσεις, ακόμη και όταν ο αναγνώστης μπορεί να
+θυμάται το περιεχόμενο. Για αυτόν τον σκοπό, το βιβλίο συνοδεύεται με
+συμπληρωματικό πολυμεσικό περιεχόμενο και κυρίως με την δυνατότητα για
+την προσθήκη περιεχομένου από τους αναγνώστες σε δικό τους αντίγραφο του
+πηγαίου κώδικα. Η εποικοδομητική μελετή του συμπληρωματικού περιεχόμενου
+δίνει την δυνατότητα στον αναγνώστη να μεταβεί σταδιακά στην
+δραστηριότητα της σκέψης και της συγγραφής και μέσα από αυτήν την
+προσπάθεια να κατανόησει καλύτερα όχι απλά το περιεχόμενο, αλλά και την
+ευρύτερη γνωστική περιοχή. Η ουσιαστική όμως κατανόηση πρακτικών
+ζητημάτων, όπως η κατασκευή της διάδρασης απαιτεί και την πρακτική
+ενασχόληση με τα αντίστοιχα ζητήματα, το οποίο γίνεται με τις προτάσεις
+για πρόσθετες δραστηριότητες κατασκευής διαδραστικών συστημάτων.</p>
+<p>Στα επόμενα κεφάλαια αυτού του βιβλίου μελετάμε εκείνα τα θέματα που
+ανεξάρτητα από τις τεχνολογικές εξελίξεις των τελευταίων δεκαετιών
+παραμένουν διαχρονικά και επίκαιρα.</p>
+<h1 id="πρόλογος">Πρόλογος</h1>
+<blockquote>
+<p>Τα πράγματα που πρέπει να κάνεις τα μαθαίνεις κάνοντάς τα.
+Αριστοτέλης</p>
+</blockquote>
+<p>Ο σκοπός αυτού του βιβλίου είναι να δώσει μια σύντομη εισαγωγή στα
+συστήματα διάδρασης ανθρώπου και υπολογιστή και κυρίως να ενθαρρύνει ένα
+κριτικό διάλογο αναφορικά με τις ατομικές και συλλογικές επιλογές που
+έχουν διαμορφώσει τα σύγχρονα συστήματα. Η μελέτη των παλιότερων
+συστημάτων έχει ιστορικό χαρακτήρα μόνο σε μια πρώτη επιφανειακή
+ανάγνωση, γιατί ο βασικός σκοπός είναι να εντοπιστούν εκείνες οι
+συνθήκες, οι δυνάμεις, και τα υλικά που θα επιτρέψουν την κατασκευή νέων
+συστημάτων. Μέσα από την κριτική ανάλυση των παλιότερων συστήματων
+προκύπτουν ερμηνείες για την μορφή τους. Επιπλέον, η μελέτη των
+παλιότερων συστημάτων αποκαλύπτει τις διαχρονικές αξίες και τις
+βέλτιστες πρακτικές που μπορούν να οδηγήσουν σε καλύτερα συστήματα
+διάδρασης, με τρόπο συστηματικό και με τεκμηριωμένες παραδοχές.</p>
+<p>Μια προσεκτική μελέτη των παραδοσιακών και των σύγχρονων συστημάτων
+διάδρασης δείχνει πως δημιουργήθηκαν σε ένα συγκεκριμένο τεχνολογικό και
+πολιτισμικό πλαίσιο και πως εξυπηρετούν συγκεκριμένα κίνητρα και
+στόχους. Αυτή η διαπίστωση απελευθερώνει τον αναγνώστη, καθώς του
+επιτρέπει να κατανοήσει όλα τα σύγχρονα συστήματα, απλά ως ένα
+στιγμιότυπο μιας διαδρομής με πολλές εναλλακτικές, και όχι ως κάτι
+αναπόφεκτο, ούτε καν ως αναγκαίο βήμα, για αυτά που θα μπορούσαν να
+δημιουργηθούν. Ακόμη περισσότερο από μια κριτική ανάγνωση της
+τεχνολογικής εξέλιξης, το κυρίαρχο αφήγημα που διατρέχει το σώμα του
+κειμένου, αλλά και το συμπληρωματικό περιεχόμενο, είναι μια έμφαση σε
+εκείνες τις διαχρονικές τεχνολογίες και τεχνικές που επιτρέπουν την
+κατασκευή νέων εναλλακτικών συστημάτων διάδρασης για τις ανάγκες του
+σήμερα αλλά και του αύριο.</p>
+<p>Αυτό που παραμένει διαχρονικό δεν είναι τόσο κάποια δεδομένη γραφική
+διεπαφή, όπως αυτή του κινητού ή επιτραπέζιου συστήματος, αλλά κυρίως
+εκείνη η σύνθεση υλικών και δυνάμεων όπως, διαδραστικών αξιών, μεθόδων,
+αρχετύπων, τεχνικών, και μοντέλων που δημιούργησαν εκείνες τις διεπαφές.
+Με αυτόν τον τρόπο, ο αναγνώστης μαθαίνει κυρίως να σκέφτεται για τις
+συνθήκες και για τον τρόπο που κατασκευάστηκαν τα υπάρχοντα διαδραστικά
+συστήματα, έτσι ώστε να μπορέσει στην συνέχεια, αφού κρίνει και
+ερμηνεύσει το παρελθόν, να συνθέσει τις δυνάμεις της σύγχρονης εποχής
+για την κατασκευή μελλοντικών συστημάτων διάδρασης.</p>
+<p>Οι παραπάνω παραδοχές επηρεάζουν το περιεχόμενο και την μορφή του
+βιβλίου. Το περιεχόμενο φαίνεται σαν να γράφτηκε κάπου την δεκαετία του
+2000, έτσι ώστε σε δέκα χρόνια από σήμερα να έχει την ίδια αξία, αφού η
+κατανόηση μας για εκείνα τα συστήματα λίγο θα έχει αλλάξει στο μεταξύ.
+Επιπλέον, δίνεται έμφαση στα κλασικά συστήματα διάδρασης γιατί με την
+βοήθεια της χρονικής απόστασης που έχουμε μπορούμε να ξεχωρίσουμε
+καθαρότερα τις ιδιότητες εκείνες που είναι διαχρονικές από εκείνες που
+απλά εξυπηρετούσαν παλιά κίνητρα, ή ταίριαζαν στο οργανωσιακό πλαίσιο
+μιας εποχής ή οργανισμού. Αντίστοιχα, και η μορφή του βιβλίου ακολουθεί
+το περιεχόμενο του και συνοδεύεται από εικόνες συστημάτων που θεωρούνται
+κλασικά, ανεξάρτητα από την εμπορική αποδοχή τους, αρκεί να περιέχουν
+αξίες και ιδέες που τελικά συναντάμε διαχρονικά.</p>
+<p>Συνοπτικά, σε αυτό το βιβλίο γίνεται μια σύνθεση γνώσεων με στόχο την
+έμπνευση του αναγνωστή, ο οποίος θα αναζητήσει περισσότερα έξω από αυτό,
+και γιατί όχι θα μπει σε ένα διάλογο με τον συγγραφέα, στο αποθετήριο
+ανοικτού πηγαίου κειμένου του βιβλίου που υπάρχει για αυτόν τον σκοπό.
+Με αυτόν τον τρόπο, τόσο η συγγραφή όσο και η ανάγνωση αυτού του
+βιβλίου, γίνονται με μορφή κριτικού διαλόγου, όπως ακριβώς δηλαδή και το
+πνεύμα που διατρέχει το βιβλίο απέναντι στις τεχνολογίες των συστημάτων
+διάδρασης.</p>
+<h1 id="ιστοσελίδα-και-συνοδευτικό-περιεχόμενο">Ιστοσελίδα και
+συνοδευτικό περιεχόμενο</h1>
+<blockquote>
+<p>Συνέχεια προσπαθώ να κάνω αυτό που δεν μπορώ, έτσι ώστε κάποια στιγμή
+να μπορώ να το κάνω. Πάμπλο Πικάσο</p>
+</blockquote>
+<p>Αν και φτάσατε στην τελευταία σελίδα, το βιβλίο αυτό δεν τελειώνει
+εδώ, αλλά συνεχίζεται στην συνοδευτική ηλεκτρονική του έκδοση, η οποία
+περιέχει πολυμεσικό και διαδραστικό περιεχόμενο, όπως είναι θεματικές
+διαφάνειες και τα χρονολόγια. Επίσης, σκόπιμα το βιβλίο δεν περιέχει μια
+σειρά από ενότητες όπως οι ασκήσεις και οι εργασίες, γιατί αυτές
+βρίσκονται στην ιστοσελίδα, έτσι ώστε να μπορούν να ενημερώνονται
+συνέχεια: <a href="https://pibook.epidro.me"
+class="uri">https://pibook.epidro.me</a></p>
+</body>
+</html>
